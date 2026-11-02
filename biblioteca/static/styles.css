@@ -1,0 +1,127 @@
+/* styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #55423d; /* Color de fondo según la imagen */
+  color: #fff3ec; /* Color de párrafo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 2em;
+  color: #ffffff; /* Color de headline */
+}
+
+header nav a {
+  margin: 0 10px;
+  color: #e78fb3; /* Color de highlight */
+  text-decoration: none;
+  font-size: 1em;
+}
+
+header nav a:hover {
+  color: #ffc0ad; /* Color de button */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #271c19; /* Color de button text para contraste */
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #140d0b; /* Color de stroke */
+  color: #ffffff; /* Color de headline */
+}
+
+tr:nth-child(even) {
+  background-color: #271c19; /* Color de button text */
+}
+
+button,
+input[type="submit"] {
+  background-color: #ffc0ad; /* Color de button */
+  color: #271c19; /* Color de button text */
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #e78fb3; /* Color de highlight para hover */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+form label {
+  font-weight: bold;
+  color: #fff3ec; /* Color de párrafo */
+}
+
+form input[type="text"],
+form input[type="number"] {
+  padding: 8px;
+  border: 1px solid #140d0b; /* Color de stroke */
+  border-radius: 4px;
+  font-size: 1em;
+  background-color: #271c19; /* Color de button text */
+  color: #fff3ec; /* Color de párrafo */
+}
+
+.message {
+  background-color: #ffc0ad; /* Color de button */
+  color: #271c19; /* Color de button text */
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.edit-link,
+.pagination-link {
+  color: #e78fb3; /* Color de highlight */
+  text-decoration: none;
+}
+
+.edit-link:hover,
+.pagination-link:hover {
+  color: #ffc0ad; /* Color de button para hover */
+}

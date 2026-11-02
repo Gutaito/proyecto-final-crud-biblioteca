@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Agregar Libro</h2>
+    <form method="post">
+        <label for="title">Título:</label>
+        <input type="text" name="title" id="title" required>
+        
+        <label for="author">Autor:</label>
+        <input type="text" name="author" id="author" required>
+        
+        <label for="year">Año:</label>
+        <input type="number" name="year" id="year" required>
+        
+        <input type="submit" value="Agregar">
+    </form>
+{% endblock %}

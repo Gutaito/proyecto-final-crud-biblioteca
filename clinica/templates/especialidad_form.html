@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Especialidad - Clínica Central{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <h2>{{ 'Editar especialidad' if especialidad else 'Agregar especialidad' }}</h2>
+
+    <form method="POST">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required
+               value="{{ especialidad.nombre if especialidad else '' }}">
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="4">{{ especialidad.descripcion if especialidad else '' }}</textarea>
+
+        <div class="form-actions">
+            <button class="btn" type="submit">Guardar</button>
+            <a class="btn btn-secondary" href="{{ url_for('especialidades') }}">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

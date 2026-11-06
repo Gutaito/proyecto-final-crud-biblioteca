@@ -1,0 +1,278 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fa;
+    color: #253247;
+}
+
+.header {
+    background: #123b5d;
+    color: white;
+    padding: 22px 5%;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 27px;
+}
+
+.brand p {
+    margin: 5px 0 18px;
+    color: #d3e2ef;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 9px 13px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background: #245779;
+}
+
+.container {
+    width: 90%;
+    max-width: 1250px;
+    min-height: 65vh;
+    margin: 30px auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.page-header h2,
+.form-card h2 {
+    margin-top: 0;
+    color: #123b5d;
+}
+
+.page-header p {
+    color: #64748b;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background: #176b87;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #10546c;
+}
+
+.btn-secondary {
+    background: #64748b;
+}
+
+.btn-secondary:hover {
+    background: #475569;
+}
+
+.btn-danger {
+    background: #c0392b;
+}
+
+.btn-danger:hover {
+    background: #962d22;
+}
+
+.btn-small {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.stat-card span {
+    display: block;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.stat-card strong {
+    font-size: 28px;
+    color: #123b5d;
+}
+
+.table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+th,
+td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #e5eaf0;
+    text-align: left;
+}
+
+th {
+    background: #eaf1f6;
+    color: #123b5d;
+}
+
+tr:hover td {
+    background: #f8fafc;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.actions form {
+    margin: 0;
+}
+
+.empty {
+    padding: 25px;
+    text-align: center;
+    color: #64748b;
+}
+
+.form-card {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 28px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+}
+
+label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #8bbbd0;
+    border-color: #176b87;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.message {
+    padding: 13px 16px;
+    margin-bottom: 18px;
+    border-radius: 5px;
+}
+
+.message.success {
+    background: #dff4e5;
+    color: #176333;
+}
+
+.message.error {
+    background: #fce4e4;
+    color: #922b21;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 12px;
+    background: #e2e8f0;
+    font-size: 12px;
+}
+
+.status.confirmado,
+.status.completado {
+    background: #dff4e5;
+    color: #176333;
+}
+
+.status.cancelado {
+    background: #fce4e4;
+    color: #922b21;
+}
+
+.status.pendiente {
+    background: #fff1cc;
+    color: #805b00;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    color: #64748b;
+}
+
+@media (max-width: 750px) {
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+}

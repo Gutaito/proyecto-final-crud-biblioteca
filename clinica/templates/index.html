@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Pacientes - Clínica Central{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h2>Gestión de pacientes</h2>
+        <p>Administración de los pacientes registrados en la clínica.</p>
+    </div>
+    <a class="btn" href="{{ url_for('add_patient') }}">Registrar paciente</a>
+</div>
+
+<div class="stats">
+    <div class="stat-card">
+        <span>Total de pacientes</span>
+        <strong>{{ total_pacientes }}</strong>
+    </div>
+    <div class="stat-card">
+        <span>Médicos registrados</span>
+        <strong>{{ total_medicos }}</strong>
+    </div>
+    <div class="stat-card">
+        <span>Turnos registrados</span>
+        <strong>{{ total_turnos }}</strong>
+    </div>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in pacientes %}
+            <tr>
+                <td>{{ paciente.dni }}</td>
+                <td>{{ paciente.nombre }}</td>
+                <td>{{ paciente.apellido }}</td>
+                <td>{{ paciente.telefono or '-' }}</td>
+                <td>{{ paciente.email or '-' }}</td>
+                <td class="actions">
+                    <a class="btn btn-small btn-secondary"
+                       href="{{ url_for('edit_patient', id=paciente.id) }}">Editar</a>
+
+                    <form method="POST"
+                          action="{{ url_for('delete_patient', id=paciente.id) }}"
+                          onsubmit="return confirm('¿Eliminar este paciente?');">
+                        <button class="btn btn-small btn-danger" type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="empty">Todavía no hay pacientes registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

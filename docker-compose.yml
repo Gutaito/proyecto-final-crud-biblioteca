@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    container_name: biblioteca_web
+    container_name: clinica_web
     ports:
       - "5000:5000"
     env_file:
@@ -13,7 +13,7 @@ services:
 
   db:
     image: mysql:8.4
-    container_name: biblioteca_db
+    container_name: clinica_db
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
@@ -22,7 +22,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - biblioteca_data:/var/lib/mysql
+      - clinica_data:/var/lib/mysql
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
@@ -33,4 +33,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  biblioteca_data:
+  clinica_data:

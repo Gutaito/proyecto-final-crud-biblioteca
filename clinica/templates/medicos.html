@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Médicos - Clínica Central{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h2>Gestión de médicos</h2>
+        <p>Listado de profesionales registrados.</p>
+    </div>
+    <a class="btn" href="{{ url_for('add_medico') }}">Registrar médico</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Matrícula</th>
+                <th>Especialidad</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medico in medicos %}
+            <tr>
+                <td>{{ medico.nombre }}</td>
+                <td>{{ medico.apellido }}</td>
+                <td>{{ medico.matricula }}</td>
+                <td>{{ medico.especialidad }}</td>
+                <td>{{ medico.telefono or '-' }}</td>
+                <td>{{ medico.email or '-' }}</td>
+                <td class="actions">
+                    <a class="btn btn-small btn-secondary"
+                       href="{{ url_for('edit_medico', id=medico.id) }}">Editar</a>
+                    <form method="POST"
+                          action="{{ url_for('delete_medico', id=medico.id) }}"
+                          onsubmit="return confirm('¿Eliminar este médico?');">
+                        <button class="btn btn-small btn-danger" type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="7" class="empty">No hay médicos registrados.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar consulta - Clínica Central{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <h2>Registrar consulta médica</h2>
+
+    {% if not turnos %}
+        <p class="message error">
+            No hay turnos completados disponibles para registrar una consulta.
+            Primero completá un turno desde la sección Turnos.
+        </p>
+        <a class="btn btn-secondary" href="{{ url_for('turnos') }}">Volver a turnos</a>
+    {% else %}
+    <form method="POST">
+        <label for="turno_id">Turno</label>
+        <select id="turno_id" name="turno_id" required>
+            <option value="">Seleccionar turno</option>
+            {% for turno in turnos %}
+            <option value="{{ turno.id }}">
+                #{{ turno.id }} - {{ turno.paciente_apellido }}, {{ turno.paciente_nombre }}
+                - Dr. {{ turno.medico_apellido }}, {{ turno.medico_nombre }}
+                - {{ turno.fecha }} {{ turno.hora }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <label for="observaciones">Observaciones</label>
+        <textarea id="observaciones" name="observaciones" rows="5"
+                  placeholder="Descripción de la consulta..."></textarea>
+
+        <div class="form-actions">
+            <button class="btn" type="submit">Guardar consulta</button>
+            <a class="btn btn-secondary" href="{{ url_for('consultas') }}">Cancelar</a>
+        </div>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

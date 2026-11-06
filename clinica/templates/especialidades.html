@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Especialidades - Clínica Central{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h2>Gestión de especialidades</h2>
+        <p>Especialidades médicas disponibles.</p>
+    </div>
+    <a class="btn" href="{{ url_for('add_especialidad') }}">Agregar especialidad</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Médicos asociados</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for especialidad in especialidades %}
+            <tr>
+                <td>{{ especialidad.nombre }}</td>
+                <td>{{ especialidad.descripcion or '-' }}</td>
+                <td>{{ especialidad.cantidad_medicos }}</td>
+                <td class="actions">
+                    <a class="btn btn-small btn-secondary"
+                       href="{{ url_for('edit_especialidad', id=especialidad.id) }}">Editar</a>
+                    <form method="POST"
+                          action="{{ url_for('delete_especialidad', id=especialidad.id) }}"
+                          onsubmit="return confirm('¿Eliminar esta especialidad?');">
+                        <button class="btn btn-small btn-danger" type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="empty">No hay especialidades registradas.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

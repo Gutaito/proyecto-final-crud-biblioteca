@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Consultas - Clínica Central{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h2>Consultas médicas</h2>
+        <p>Registro de consultas realizadas.</p>
+    </div>
+    <a class="btn" href="{{ url_for('add_consulta') }}">Registrar consulta</a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Médico</th>
+                <th>Fecha del turno</th>
+                <th>Hora</th>
+                <th>Fecha de consulta</th>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for consulta in consultas %}
+            <tr>
+                <td>{{ consulta.paciente_apellido }}, {{ consulta.paciente_nombre }}</td>
+                <td>{{ consulta.medico_apellido }}, {{ consulta.medico_nombre }}</td>
+                <td>{{ consulta.fecha }}</td>
+                <td>{{ consulta.hora }}</td>
+                <td>{{ consulta.fecha_consulta }}</td>
+                <td>{{ consulta.observaciones or '-' }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6" class="empty">No hay consultas registradas.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
